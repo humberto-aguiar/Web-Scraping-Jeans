@@ -11,7 +11,7 @@ path_papermill="/home/humberto/.pyenv/versions/3.8.0/envs/web_scraping/bin/paper
 file_to_execute="hm-web-scraping-v03.ipynb"
 
 # printing msg
-# echo -e "Starting Web Scraping"
+echo -e "Starting Web Scraping\n"
 
 # paths
 path_file="/home/humberto/DS/hm/src/$file_to_execute"
