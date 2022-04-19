@@ -16,3 +16,6 @@ echo -e "Starting Web Scraping"
 # paths
 path_file="/home/ubuntu/project/Web-Scraping-Jeans/src/$file_to_execute"
 path_log="/home/ubuntu/project/Web-Scraping-Jeans/src/logs/$file_to_execute-date:$dt.ipynb"
+
+# runing papermill deploy file on log path
+$path_papermill $path_file $path_log
