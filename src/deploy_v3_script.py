@@ -8,6 +8,7 @@ import re
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import json
+import time
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -101,9 +102,11 @@ links = list(set(links))
 links.sort()
 # defining base dataframe
 df_prods = pd.DataFrame()
+print('Starting BS Scraping:\n')
 
 for link in links:
-    
+    print('scraping: {}'.format(link))
+
     # scrap each product in home page list
     single_product = requests.get(link, headers = headers)
     soup = BeautifulSoup(single_product.text, 'html.parser')
@@ -216,6 +219,8 @@ for idx, link in enumerate(df_prods['link']):
     df_aux = pd.DataFrame( {'sku' : sku, 'price' : price, 'fit' : fit, 'composition' : composition, 'description' : desc ,'text' : text_raw,}, index = [0] )
     df_comp = pd.concat( [df_comp, df_aux], axis = 0 )     
     gc.collect()
+    time.sleep(10)
+
 df_comp.reset_index(inplace = True, drop = True)
 driver.quit()
 gc.collect()
